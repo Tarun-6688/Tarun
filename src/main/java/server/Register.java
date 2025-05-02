@@ -32,6 +32,6 @@ public class Register extends HttpServlet {
 		tr.commit();
 		resp.sendRedirect("Welcome.html");
 
-		//resp.getWriter().print("<h1> register success</h1>");
+//		resp.getWriter().print("<h1> register success</h1>");
 	}
 }
