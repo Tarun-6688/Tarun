@@ -31,6 +31,5 @@ public class Register extends HttpServlet {
 		em.persist(e);
 		tr.commit();
 		resp.sendRedirect("Welcome.html");
-// jdkjhj
 	}
 }
