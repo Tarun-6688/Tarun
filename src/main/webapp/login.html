@@ -1,89 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Registration Form</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #d3cce3, #e9e4f0);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-    form {
-      background-color: #fff;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      width: 350px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 350px;
+        }
 
-    h2 {
-      text-align: center;
-      color: #444;
-      margin-bottom: 20px;
-    }
+        h2 {
+            text-align: center;
+            
+            margin-bottom: 25px;
+        }
 
-    label {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #555;
+        }
 
-    input[type="text"],
-    input[type="number"] {
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      outline: none;
-      transition: border 0.3s;
-    }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
 
-    input[type="text"]:focus,
-    input[type="number"]:focus {
-      border-color: #7e57c2;
-    }
+        .error-message {
+            background-color: #ffdddd;
+            color: #d8000c;
+            padding: 10px;
+            border-left: 5px solid;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
 
-    button {
-      background-color: #7e57c2;
-      color: white;
-      padding: 12px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-    }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-    button:hover {
-      background-color: #673ab7;
-      transform: scale(1.05);
-    }
-  </style>
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-  <form action="save">
-    <h2>Register</h2>
 
-    <label for="id">ID:</label>
-    <input type="text" id="id" name="id" required>
+<div class="login-container">
+    <h2>Log In</h2>
 
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <form action="loginServlet" method="post">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
 
-    <label for="age">Age:</label>
-    <input type="number" id="age" name="age" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-    <button type="submit">Register</button>
-    
-  </form>
+        <% 
+            String error = (String) request.getAttribute("errorMessage");
+            if (error != null && !error.trim().isEmpty()) {
+        %>
+            <div class="error-message"><%= error %></div>
+        <% } %>
+
+        <button type="submit">Log In</button>
+    </form>
+</div>
+
 </body>
 </html>
